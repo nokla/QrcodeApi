@@ -17,7 +17,7 @@ class CreateUsersTable extends Migration
             $table->id();
             $table->string('name');
             $table->string('cin')->unique();
-            $table->string('qrcode');
+            $table->string('qrcode')->nullable();
             $table->boolean('status');
             $table->timestamps();
         });
