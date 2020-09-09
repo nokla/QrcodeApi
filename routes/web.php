@@ -19,7 +19,7 @@ $router->group(['prefix'=>'api/'], function() use($router){
 
     $router->get('/users', 'UserController@index');
     $router->post('/user', 'UserController@create');
-    $router->get('/user/{id}', 'UserController@show');
+    $router->get('/user/{cin}', 'UserController@show');
     $router->put('/user/{id}', 'UserController@update');
     $router->delete('/user/{id}', 'UserController@destroy');
 

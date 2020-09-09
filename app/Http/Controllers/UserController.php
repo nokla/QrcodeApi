@@ -28,16 +28,16 @@ class UserController extends Controller
         $user = User::create($request->all());
         $filename = 'images/'.$user->id.'_'.strtotime(date("Y-m-d H:i:s")).'.png';
 
-        $code = \QrCode::size(500)
+        $code = \QrCode::size(300)
         ->format('png')
-        ->generate($user->id, base_path('public/'.$filename));
+        ->generate($user->cin, base_path('public/'.$filename));
         $user->qrcode=$filename;
         $user->update();
-        return response()->json($filename);
+        return response()->json($user);
     }
 
-    public function show(Int $id){
-        $user = User::find($id);
+    public function show($cin){
+        $user = User::where('cin',$cin)->first();
         if (!$user) {
             return '';
         }
